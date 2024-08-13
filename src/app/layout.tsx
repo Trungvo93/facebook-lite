@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description:
     'This is website copyright facebook website. It is free software',
   icons: {
-    icon: 'favicon.ico',
+    icon: './favicon.ico',
   },
 };
 

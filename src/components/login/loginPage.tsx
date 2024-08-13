@@ -1,13 +1,12 @@
 'use client';
-import { Image } from '@nextui-org/image';
-import { Input } from '@nextui-org/input';
-import { EyeFilledIcon } from '../eyefilledIcon/EyeFilledIcon';
-import { EyeSlashFilledIcon } from '../eyefilledIcon/eyeSlashFilledIcon ';
-import { useState } from 'react';
-export default () => {
-  const [isVisible, setIsVisible] = useState(false);
 
-  const toggleVisibility = () => setIsVisible(!isVisible);
+import { Button, Input, Image, Link, Divider } from '@nextui-org/react';
+import InputShowPassword from '@/helpers/inputShowPassword';
+
+export default () => {
+  const callbackFunction = (childData: string) => {
+    console.log('childData: ', childData);
+  };
   return (
     <div>
       <main className='pt-20 pb-32'>
@@ -27,42 +26,48 @@ export default () => {
             </div>
           </div>
           <div className='w-96 shrink-0 '>
-            <div className='drop-shadow-lg p-3 bg-white rounded-lg gap-3 flex-col flex'>
-              {/* Email - Phone number input */}
-              <Input
-                isRequired
-                radius='sm'
-                autoComplete='new-password'
-                label='Email'
-                type='email'
-                placeholder='Email address'
-                variant='bordered'
-                onClear={() => console.log('input cleared')}
-              />
+            <div className='drop-shadow-lg p-3 bg-white rounded-lg '>
+              <form className='gap-3 flex-col flex'>
+                {/* Email input */}
+                <Input
+                  isRequired
+                  radius='sm'
+                  autoComplete='new-password'
+                  label='Email'
+                  type='email'
+                  placeholder='Email address'
+                  variant='bordered'
+                  onClear={() => console.log('input cleared')}
+                />
 
-              <Input
-                isRequired
-                label='Password'
-                autoComplete='new-password'
-                radius='sm'
-                variant='bordered'
-                placeholder='Enter your password'
-                endContent={
-                  <button
-                    className='focus:outline-none'
-                    type='button'
-                    onClick={toggleVisibility}
-                    aria-label='toggle password visibility'>
-                    {isVisible ? (
-                      <EyeSlashFilledIcon className='text-2xl text-default-400 pointer-events-none' />
-                    ) : (
-                      <EyeFilledIcon className='text-2xl text-default-400 pointer-events-none' />
-                    )}
-                  </button>
-                }
-                type={isVisible ? 'text' : 'password'}
-                className=''
-              />
+                {/* Password input */}
+                <InputShowPassword valueCallback={callbackFunction} />
+
+                {/* Submit */}
+                <Button
+                  color='primary'
+                  radius='sm'
+                  size='lg'
+                  className='my-3 font-medium text-xl'>
+                  Log in
+                </Button>
+              </form>
+              <div className='text-center'>
+                <Link
+                  href='#'
+                  className=''>
+                  Forgotten password?
+                </Link>
+              </div>
+              <Divider className='my-5' />
+              <div className='text-center'>
+                <Button
+                  radius='sm'
+                  size='lg'
+                  className='font-medium text-xl text-white bg-green-600'>
+                  Create new account
+                </Button>
+              </div>
             </div>
           </div>
         </div>
