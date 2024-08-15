@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={sfProDisplay.className}
+        className={`${sfProDisplay.className} tracking-wide `}
         suppressHydrationWarning={true}>
         <Providers>{children}</Providers>
       </body>

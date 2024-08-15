@@ -2,6 +2,7 @@
 
 import { Button, Input, Image, Link, Divider } from '@nextui-org/react';
 import InputShowPassword from '@/helpers/inputShowPassword';
+import RegisterAccount from './registerAccount';
 
 export default () => {
   const callbackFunction = (childData: string) => {
@@ -9,7 +10,7 @@ export default () => {
   };
   return (
     <div>
-      <main className='pt-20 pb-32'>
+      <main className='pt-24 pb-32 bg-gray-100'>
         <div className='max-w-[980px] h-[536px] mx-auto my-0 flex justify-between gap-8'>
           <div>
             <Image
@@ -41,7 +42,10 @@ export default () => {
                 />
 
                 {/* Password input */}
-                <InputShowPassword valueCallback={callbackFunction} />
+                <InputShowPassword
+                  valueCallback={callbackFunction}
+                  showLabel={true}
+                />
 
                 {/* Submit */}
                 <Button
@@ -52,6 +56,26 @@ export default () => {
                   Log in
                 </Button>
               </form>
+
+              {/* Button login Google */}
+              <div className='mb-3'>
+                <Button
+                  startContent={
+                    <Image
+                      src={'/google-logo.svg'}
+                      alt='Google logo'
+                      width={26}
+                    />
+                  }
+                  radius='sm'
+                  size='lg'
+                  fullWidth
+                  className='font-medium text-xl '>
+                  Sign in with Google
+                </Button>
+              </div>
+
+              {/* Forgot password */}
               <div className='text-center'>
                 <Link
                   href='#'
@@ -60,18 +84,25 @@ export default () => {
                 </Link>
               </div>
               <Divider className='my-5' />
-              <div className='text-center'>
-                <Button
-                  radius='sm'
-                  size='lg'
-                  className='font-medium text-xl text-white bg-green-600'>
-                  Create new account
-                </Button>
+              <div className='text-center mb-4'>
+                <RegisterAccount />
               </div>
+            </div>
+            <div className='text-center my-5 '>
+              <p>
+                <span className='font-semibold'>Create a Page</span> for a
+                celebrity, brand or business.
+              </p>
             </div>
           </div>
         </div>
       </main>
+      <footer className='flex justify-center my-8 text-gray-500'>
+        <p>
+          This website is designed and uses content based on Facebook. This is a
+          demo website used solely for learning purposes.
+        </p>
+      </footer>
     </div>
   );
 };

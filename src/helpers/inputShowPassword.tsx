@@ -3,14 +3,17 @@ import { useState } from 'react';
 import { EyeSlashFilledIcon } from './eyefilledIcon/eyeSlashFilledIcon ';
 import { EyeFilledIcon } from './eyefilledIcon/eyeFilledIcon';
 
-export default (props: { valueCallback(value: string): void }) => {
+export default (props: {
+  valueCallback(value: string): void;
+  showLabel: boolean;
+}) => {
   const [isVisible, setIsVisible] = useState(false);
   const toggleVisibility = () => setIsVisible(!isVisible);
 
   return (
     <Input
       isRequired
-      label='Password'
+      label={props.showLabel === true ? 'Password' : ''}
       autoComplete='new-password'
       radius='sm'
       variant='bordered'
